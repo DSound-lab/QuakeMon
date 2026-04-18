@@ -1,0 +1,16 @@
+[Unit]
+Description=Geophon Überwachung (ADS1115)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/env python3 /usr/local/bin/geophone_monitor.py
+Restart=always
+RestartSec=5
+User=pi
+WorkingDirectory=/usr/local/bin
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
