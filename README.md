@@ -3,7 +3,7 @@
 Geophone Monitoring System (SM-6/V2 + ADS1115)
 DIN-4150 compliant vibration monitoring with filtering, event capture, RMS analysis, hysteresis, and cooldown
 
-This projects intention is to implement a semi-professional vibration monitoring system using an SM-6/V2 geophone (4.5 Hz, 28.8 V/m/s) connected to an ADS1115 ADC on a Raspberry Pi. It runs as a systemd background service and performs real-time vibration analysis, including calibrated velocity measurement (mm/s), bandpass filtering, threshold detection, 8-second event capture, RMS and peak analysis, hysteresis, cooldown logic, and optional anti-ringing features.
+This project implements a professional-grade vibration monitoring system using an SM-6/V2 geophone (4.5 Hz, 28.8 V/m/s) connected to an ADS1115 ADC. It runs as a systemd background service and performs real-time vibration analysis, including calibrated velocity measurement (mm/s), bandpass filtering, threshold detection, 8-second event capture, RMS and peak analysis, hysteresis, cooldown logic, and optional anti-ringing features.
 
 1. Hardware
 
@@ -66,7 +66,8 @@ When the threshold is crossed, the system:
 5. Emits a structured alert
 6. Enters cooldown
 
-Example alert (logged to journal):
+Example alert:
+
 Max value: 0.4123 mm/s
 RMS value: 0.1884 mm/s
 Duration: 7.82 seconds
@@ -114,4 +115,8 @@ sudo journalctl -u geophone-monitor -f
 
 9. Summary
 
-This system aims to provide a robust, DIN-4150-oriented vibration monitoring solution with accurate geophone calibration, real-time filtering, intelligent event detection, detailed event analytics, protection against false triggers, and reliable background operation. It behaves like a compact, professional mini-seismograph suitable for structural monitoring, environmental vibration logging, and machine diagnostics.
+This system provides a robust, DIN-4150-oriented vibration monitoring solution with accurate geophone calibration, real-time filtering, intelligent event detection, detailed event analytics, protection against false triggers, and reliable background operation. It behaves like a compact, professional mini-seismograph suitable for structural monitoring, environmental vibration logging, and machine diagnostics.
+
+10. InfluxDB Integration
+
+The system now includes integration with InfluxDB, a time-series database, to log vibration events and measurements. This allows for efficient storage, querying, and visualization of vibration data over time, enabling long-term monitoring and analysis through compatible dashboards and tools.
